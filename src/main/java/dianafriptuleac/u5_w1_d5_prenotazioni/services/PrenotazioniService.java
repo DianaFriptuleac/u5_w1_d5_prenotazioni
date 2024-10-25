@@ -21,11 +21,13 @@ public class PrenotazioniService {
     PrenotazioniRepository prenotazioniRepository;
 
     public void savePrenotazione(Utente utente, Postazioni postazioni, LocalDate dataPrenotazione) {
+        //Controllo se la postazione e gia prenotata
         Optional<Prenotazioni> prenotazioneEsistente = prenotazioniRepository.
                 findByPostazioneAndDataPrenotazione(postazioni, dataPrenotazione);
         if (prenotazioneEsistente.isPresent()) {
             throw new ValidationException("La postazione è già occupata per questa data");
         }
+        //Controllo se l'utente ha gia una prenotazione per quella data
         Optional<Prenotazioni> prenotazioneUtente = prenotazioniRepository.
                 findByUtenteAndDataPrenotazione(utente, dataPrenotazione);
         if (prenotazioneUtente.isPresent()) {

@@ -28,6 +28,7 @@ public class PostazioniRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        //mappa degli edifici x nome
         Map<String, Edificio> edificiMap = edificioService.findAll().stream()
                 .collect(Collectors.toMap(Edificio::getNome, edificio -> edificio));
 
@@ -46,7 +47,9 @@ public class PostazioniRunner implements CommandLineRunner {
         });
         */
 
-        List<Postazioni> listPostazioni = postazioniService.findByTipoAndCitta(TipoPostazione.RIUNIONI, "Milano");
+
+        //Cerco la postazione per tipo e citta
+        List<Postazioni> listPostazioni = postazioniService.findByTipoAndCitta(TipoPostazione.OPENSPACE, "Milano");
         listPostazioni.forEach(postazione ->
                 log.info("Le postazioni trovate:Descrizione: {}, Tipo: {}, Città: {} ", postazione.getDescrizione(), postazione.getTipoPostazione(), postazione.getEdificio().getCitta()));
     }

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "prenotazioni")
 @Getter
-@Setter
 @NoArgsConstructor
 public class Prenotazioni {
     @Id
@@ -19,6 +18,7 @@ public class Prenotazioni {
     @Getter(AccessLevel.NONE)
     private long id;
 
+    @Setter
     @Column(name = "data_prenotazione")
     private LocalDate dataPrenotazione;
 
@@ -35,6 +35,7 @@ public class Prenotazioni {
         this.utente = utente;
         this.postazione = postazione;
     }
+
 
     @Override
     public String toString() {

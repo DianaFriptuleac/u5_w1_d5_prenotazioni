@@ -22,7 +22,7 @@ public class PostazioniService {
 
     public void savePostazione(Postazioni newPostazione) {
         if (newPostazione.getDescrizione() == null || newPostazione.getDescrizione().isEmpty()) {
-            throw new ValidationException("La descrizione della postazione non può essere vuota");
+            throw new ValidationException("La descrizione della postazione non può essere un campo vuoto");
         }
         if (newPostazione.getTipoPostazione() == null) {
             throw new ValidationException("Il tipo di postazione deve essere specificato");
@@ -42,8 +42,15 @@ public class PostazioniService {
         return postazioniRepository.findAll();
     }
 
+    //Cerco postazione per tipo e citta
     public List<Postazioni> findByTipoAndCitta(TipoPostazione tipoPostazione, String citta) {
-        return postazioniRepository.findByTipoAndCitta(tipoPostazione, citta);
+        List<Postazioni> foundPostazioni = postazioniRepository.findByTipoAndCitta(tipoPostazione, citta);
+
+        if (foundPostazioni.isEmpty()) {
+            log.info("Nessuno postazione trovata per il tipo {} nella citta {} ", tipoPostazione, citta);
+        }
+        return foundPostazioni;
+
     }
 
 

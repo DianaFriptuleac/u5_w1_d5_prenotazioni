@@ -18,7 +18,7 @@ public class UtenteService {
 
     public void saveUtente(Utente newUtente) {
         if (newUtente.getUsername() == null || newUtente.getUsername().isEmpty()) {
-            throw new ValidationException("Lo username del utente non può essere vuoto");
+            throw new ValidationException("L'username del utente non può essere vuoto");
         }
         if (newUtente.getFullName().length() < 2) {
             throw new ValidationException("Il fullName del utente non può essere più corto di due caratteri");
