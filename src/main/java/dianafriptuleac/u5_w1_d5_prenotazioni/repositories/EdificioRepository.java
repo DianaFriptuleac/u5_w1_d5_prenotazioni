@@ -11,4 +11,5 @@ public interface EdificioRepository extends JpaRepository<Edificio, Long> {
 
     Optional<Edificio> findByNome(String nome);
 
+
 }

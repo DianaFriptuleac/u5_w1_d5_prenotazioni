@@ -49,7 +49,7 @@ public class PostazioniRunner implements CommandLineRunner {
 
 
         //Cerco la postazione per tipo e citta
-        List<Postazioni> listPostazioni = postazioniService.findByTipoAndCitta(TipoPostazione.OPENSPACE, "Milano");
+        List<Postazioni> listPostazioni = postazioniService.findByTipoAndCitta(TipoPostazione.SALA, "Bologna");
         listPostazioni.forEach(postazione ->
                 log.info("Le postazioni trovate:Descrizione: {}, Tipo: {}, Città: {} ", postazione.getDescrizione(), postazione.getTipoPostazione(), postazione.getEdificio().getCitta()));
     }
