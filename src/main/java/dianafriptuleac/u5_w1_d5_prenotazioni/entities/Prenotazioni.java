@@ -20,18 +20,18 @@ public class Prenotazioni {
     private long id;
 
     @Column(name = "data_prenotazione")
-    private LocalDate data_prenotazione;
+    private LocalDate dataPrenotazione;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "utente_id")
     private Utente utente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "postazione_id")
     private Postazioni postazione;
 
     public Prenotazioni(LocalDate data_prenotazione, Utente utente, Postazioni postazione) {
-        this.data_prenotazione = data_prenotazione;
+        this.dataPrenotazione = data_prenotazione;
         this.utente = utente;
         this.postazione = postazione;
     }
@@ -40,7 +40,7 @@ public class Prenotazioni {
     public String toString() {
         return "Prenotazioni{" +
                 "id=" + id +
-                ", data_prenotazione=" + data_prenotazione +
+                ", data_prenotazione=" + dataPrenotazione +
                 '}';
     }
 }

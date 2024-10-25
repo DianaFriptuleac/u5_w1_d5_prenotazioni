@@ -28,7 +28,7 @@ public class Postazioni {
     @Column(name = "max_occupanti")
     private long max_occupanti;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
 
