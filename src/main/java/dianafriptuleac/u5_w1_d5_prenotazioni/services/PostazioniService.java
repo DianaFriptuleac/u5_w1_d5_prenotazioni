@@ -1,6 +1,7 @@
 package dianafriptuleac.u5_w1_d5_prenotazioni.services;
 
 import dianafriptuleac.u5_w1_d5_prenotazioni.entities.Postazioni;
+import dianafriptuleac.u5_w1_d5_prenotazioni.enums.TipoPostazione;
 import dianafriptuleac.u5_w1_d5_prenotazioni.exceptions.ValidationException;
 import dianafriptuleac.u5_w1_d5_prenotazioni.repositories.EdificioRepository;
 import dianafriptuleac.u5_w1_d5_prenotazioni.repositories.PostazioniRepository;
@@ -40,4 +41,10 @@ public class PostazioniService {
     public List<Postazioni> findAll() {
         return postazioniRepository.findAll();
     }
+
+    public List<Postazioni> findByTipoAndCitta(TipoPostazione tipoPostazione, String citta) {
+        return postazioniRepository.findByTipoAndCitta(tipoPostazione, citta);
+    }
+
+
 }

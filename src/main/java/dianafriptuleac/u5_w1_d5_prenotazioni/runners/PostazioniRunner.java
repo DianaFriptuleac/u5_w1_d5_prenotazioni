@@ -45,6 +45,9 @@ public class PostazioniRunner implements CommandLineRunner {
             log.info("Postazione {} salvata correttamente per edificio {}", postazione.getDescrizione(), postazione.getEdificio().getNome());
         });
         */
- 
+
+        List<Postazioni> listPostazioni = postazioniService.findByTipoAndCitta(TipoPostazione.RIUNIONI, "Milano");
+        listPostazioni.forEach(postazione ->
+                log.info("Le postazioni trovate:Descrizione: {}, Tipo: {}, Città: {} ", postazione.getDescrizione(), postazione.getTipoPostazione(), postazione.getEdificio().getCitta()));
     }
 }
